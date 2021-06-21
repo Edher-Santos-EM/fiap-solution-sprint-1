@@ -24,3 +24,11 @@ No terminal utilize
 docker compose up -d
 docker compose exec hive-server bash
 ```
+
+No diretório data vai existir os seguintes arquivos. Dentre eles o arquivo partidas_agregadas.csv. O próximo passo foi jogar pra dentro do HDFS executando os seguintes comandos no terminal bash
+
+```shell
+hdfs dfs -mkdir /cartolafc
+hdfs dfs -mkdir /cartolafc/partidas_agregadas
+hdfs dfs -copyFromLocal /data/partidas_agregadas.csv /cartolafc/partidas_agregadas/partidas_agregadas.csv
+```
