@@ -12,7 +12,9 @@ Para a criação e uso do ambiente vamos utilizar git e docker
 # SETUP
 Basta fazer um clone
 
+```shell
 git clone https://github.com/Edher-Santos-EM/fiap-solution-sprint-1
+```
 
 # INICIANDO O AMBIENTE
 
