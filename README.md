@@ -6,7 +6,9 @@ Utilize "docker compose up -d" para executar o projeto e depois "docker compose 
 
 Na pasta "data" encontramos o resultado do tratamento de dados "partidas_agregadas.csv"
 
-Foi desenvolvido um programa em python (src/python/consultas.py) para realizar o tratamento a partir das planilhas de partidas. Na pasta "data" temos um arquivo de partidas em cada pasta ano, estes arquivos foram tratados eliminando os dados desnecessários e incluindo o ano em cada planilha. Foi feito uma agregação de todas as planilhas e salvos na planilha resultante "partidas_agregadas.csv"
+Foi desenvolvido um programa em python (src/python/tratamento_dados.py) para realizar o tratamento a partir das planilhas de partidas. Na pasta "data" temos um arquivo de partidas em cada pasta ano, estes arquivos foram tratados eliminando os dados desnecessários e incluindo o ano em cada planilha. Foi feito uma agregação de todas as planilhas e salvos na planilha resultante "partidas_agregadas.csv"
+
+Clique [aqui](https://raw.githubusercontent.com/Edher-Santos-EM/fiap-solution-sprint-1/main/processo_agregacao_limpeza.md) no link para entender o processo de limpeza dos dados.
 
 ## Importar os arquivos para o HDFS.
 As instruções necessárias para importar para HDFS encontram-se em "src/importe_arquivos.sh"
