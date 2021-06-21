@@ -34,3 +34,4 @@ hdfs dfs -copyFromLocal /data/partidas_agregadas.csv /cartolafc/partidas_agregad
 ```
 
 # LISTANDO OS ARQUIVOS (LS)
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/ls.png"></img>
