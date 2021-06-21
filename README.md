@@ -41,6 +41,8 @@ hdfs dfs -mkdir /cartolafc
 hdfs dfs -mkdir /cartolafc/partidas_agregadas
 hdfs dfs -copyFromLocal /data/partidas_agregadas.csv /cartolafc/partidas_agregadas/partidas_agregadas.csv
 ```
+### Imagem evidenciando a migração para o HDFS
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/ls-hdfs.png"></img>
 
 ## CONFIGURANDO A CONEXÃO NO DBEAVER
 
