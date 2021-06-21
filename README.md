@@ -7,7 +7,7 @@ Esse setup vai criar dockers com os frameworks HDFS, Hive, Presto, Jupyter com a
 
 # SOFTWARES NECESSÁRIOS
 
-Para a criação e uso do ambiente vamos utilizar git e docker
+Para a criação e uso do ambiente vamos utilizar git, docker e DBeaver
 
 # SETUP
 Basta fazer um clone
