@@ -25,6 +25,13 @@ docker compose up -d
 docker compose exec hive-server bash
 ```
 
+## LISTANDO OS ARQUIVOS (LS)
+```shell
+$ ls /data
+```
+
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/ls.png"></img>
+
 No diretório data vai existir os seguintes arquivos. Dentre eles o arquivo partidas_agregadas.csv. O próximo passo foi jogar pra dentro do HDFS executando os seguintes comandos no terminal bash
 
 ```shell
@@ -32,6 +39,3 @@ hdfs dfs -mkdir /cartolafc
 hdfs dfs -mkdir /cartolafc/partidas_agregadas
 hdfs dfs -copyFromLocal /data/partidas_agregadas.csv /cartolafc/partidas_agregadas/partidas_agregadas.csv
 ```
-
-# LISTANDO OS ARQUIVOS (LS)
-<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/ls.png"></img>
