@@ -28,7 +28,26 @@ with resultados as
 (SELECT home_team as time, home_score as score FROM Partidas
 union all
 SELECT away_team as time, away_score FROM Partidas)
-select time, sum(score) gols_marcadaos
+select time, sum(score) gols_marcados
 from resultados
 group by time
-order by gols_marcadaos desc
+order by gols_marcados desc
+
+
+with atletas as 
+(select distinct atletaid, apelido 
+from scouts)
+select posicao, apelido from atacantes
+inner join atletas on atletas.atletaid = atacantes.atletaid 
+union all 
+select posicao, apelido from meias
+inner join atletas on atletas.atletaid = meias.atletaid 
+union all 
+select posicao, apelido from laterais
+inner join atletas on atletas.atletaid = laterais.atletaid 
+union all 
+select posicao, apelido from zagueiros
+inner join atletas on atletas.atletaid = zagueiros.atletaid 
+union all 
+select posicao, apelido from goleiro
+inner join atletas on atletas.atletaid = goleiro.atletaid 

@@ -47,9 +47,6 @@ services:
     image: shawnzhu/prestodb:0.181
     ports:
       - "8080:8080"
-
-  python-executor-consulta:
-    build: .
     
 volumes:
   namenode:
