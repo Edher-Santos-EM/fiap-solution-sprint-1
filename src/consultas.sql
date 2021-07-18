@@ -1,53 +1,59 @@
 -- Quantos registros há na tabela por ano?
-SELECT ano, COUNT(*) as partidas_ano FROM Partidas group by ano order by ano;
+SELECT ano, COUNT(*) AS partidas_ano 
+FROM Partidas 
+GROUP BY ano 
+ORDER BY ano;
 
 -- Quantas equipes únicas mandantes existem?
-SELECT count(distinct home_team) FROM Partidas;
+SELECT count(DISTINCT home_team) AS equipes_unicas 
+FROM Partidas;
 
--- Quantas vezes as equipes mandantes saíram vitoriosas?
-SELECT COUNT(*) as partidas_vitoriosas FROM Partidas where home_score > away_score;
+SELECT ano, COUNT(DISTINCT home_team) AS equipes_unicas 
+FROM Partidas 
+GROUP BY ano 
+ORDER BY ano;
+
+-- Quantas vezes AS equipes mandantes saíram vitoriosas?
+SELECT COUNT(*) AS equipes_madantes_vitoriosas 
+FROM Partidas 
+WHERE home_score > away_score;
+
+SELECT ano, COUNT(*) AS equipes_madantes_vitoriosas 
+FROM Partidas 
+WHERE home_score > away_score 
+GROUP BY ano 
+ORDER BY ano;
 
 -- Quantas partidas resultaram em empate?
-SELECT COUNT(*) as partidas_empatadas FROM Partidas where home_score = away_score;
+SELECT COUNT(*) AS partidas_empatadas 
+FROM Partidas 
+WHERE home_score = away_score;
+
+SELECT ano, COUNT(*) AS partidas_empatadas 
+FROM Partidas 
+WHERE home_score = away_score 
+GROUP BY ano 
+ORDER BY ano;
 
 
--- Consultas extras elaboradas com o intuito de praticar  
-
--- Quantas vezes as equipes mandantes saíram vitoriosas por ano?
-SELECT ano, COUNT(*) as partidas_vitoriosas FROM Partidas where home_score > away_score group by ano order by partidas_vitoriosas desc;
-
--- Qual é a equipe mandante mais vitoriosa?
-SELECT home_team, COUNT(*) as partidas_vitoriosas FROM Partidas where home_score > away_score group by home_team order by partidas_vitoriosas desc;
-
--- Qual é a equipe mandante mais teve empate?
-SELECT home_team, COUNT(*) as partidas_empatadas FROM Partidas where home_score = away_score group by home_team order by partidas_empatadas desc;
-
--- Exemplos mais avançados usando CTE
--- Qual é a equipe mandante mais fez gols?
-with resultados as 
-(SELECT home_team as time, home_score as score FROM Partidas
-union all
-SELECT away_team as time, away_score FROM Partidas)
-select time, sum(score) gols_marcados
-from resultados
-group by time
-order by gols_marcados desc
-
-
-with atletas as 
-(select distinct atletaid, apelido 
-from scouts)
-select posicao, apelido from atacantes
-inner join atletas on atletas.atletaid = atacantes.atletaid 
-union all 
-select posicao, apelido from meias
-inner join atletas on atletas.atletaid = meias.atletaid 
-union all 
-select posicao, apelido from laterais
-inner join atletas on atletas.atletaid = laterais.atletaid 
-union all 
-select posicao, apelido from zagueiros
-inner join atletas on atletas.atletaid = zagueiros.atletaid 
-union all 
-select posicao, apelido from goleiro
-inner join atletas on atletas.atletaid = goleiro.atletaid 
+-- Time montado com base nas views dos melhores scouts de atletas por posição 2 atacantes, 2 laterais, 2 meias, 4 zagueiros e 1 goleiro
+WITH atletas AS (SELECT DISTINCT atletaid, apelido FROM scouts)
+SELECT posicao, apelido 
+FROM atacantes
+INNER JOIN atletas ON atletas.atletaid = atacantes.atletaid 
+UNION ALL 	
+SELECT posicao, apelido 
+FROM meias
+INNER JOIN atletas ON atletas.atletaid = meias.atletaid 
+UNION ALL 
+SELECT posicao, apelido 
+FROM laterais
+INNER JOIN atletas ON atletas.atletaid = laterais.atletaid 
+UNION ALL 
+SELECT posicao, apelido 
+FROM zagueiros
+INNER JOIN atletas ON atletas.atletaid = zagueiros.atletaid 
+UNION ALL 
+SELECT posicao, apelido 
+FROM goleiro
+INNER JOIN atletas ON atletas.atletaid = goleiro.atletaid 
