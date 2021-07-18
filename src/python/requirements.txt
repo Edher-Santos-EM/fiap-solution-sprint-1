@@ -1,5 +1,0 @@
-PyHive
-thrift
-requests
-hive
-presto
