@@ -6,7 +6,7 @@ Esse setup vai criar dockers com os frameworks HDFS, Hive, Presto, Jupyter com a
 
 ## ARQUITETURA DA SOLUÇÃO
 
-<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/arquitetura_da_solucao.png"></img>
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/arquitetura_da_solucao.jpg"></img>
 
 ## SOFTWARES NECESSÁRIOS
 
