@@ -36,13 +36,12 @@ Os arquivos do jupyter podem ser encontrados na pasta src
 ## INICIANDO O AMBIENTE
 
 No terminal utilize
-
 ```shell
 docker compose up -d
 docker compose exec hive-server bash
 ```
 
-### LISTANDO OS ARQUIVOS (LS)
+Listando os arquivos
 ```shell
 ls /data
 ```
@@ -58,25 +57,24 @@ hdfs dfs -copyFromLocal /data/partidas_agregadas.csv /cartolafc/partidas_agregad
 hdfs dfs -copyFromLocal /data/scouts_2014_a_2017.csv /cartolafc/scouts_agregados/scouts_2014_a_2017.csv
 hdfs dfs -copyFromLocal /data/scouts_2018_a_2020.csv /cartolafc/scouts_agregados/scouts_2018_a_2020.csv
 ```
-#### Imagem evidenciando a migração para o HDFS
+Imagem evidenciando a migração para o HDFS
 ```shell
 hdfs dfs -ls /cartolafc/partidas_agregadas
 hdfs dfs -ls /cartolafc/scouts_agregados
 ```
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/ls-hdfs.png"></img>
 
-### CONFIGURANDO A CONEXÃO NO DBEAVER
+### Configurando a conexão no DBeaver
 
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/dbeaver-hive-conexao.png"></img>
 
-
-### CRIANDO TABELA DE PARTIDAS
+### Criando as Tabelas
 
 O script pode ser encontrado na pasta scr [script_tabelas.sql](https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/src/script_tabelas.sql)
 
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/dbeaver-hive-criacao-tabela.png"></img>
 
-### EXECUTANDO AS CONSULTAS
+### Consultas
 O script pode ser encontrado na pasta scr [consultas.sql](https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/src/consultas.sql)
 
 * Quantos registros há na tabela por ano?
@@ -85,7 +83,7 @@ SELECT ano, COUNT(*) as partidas_ano FROM Partidas group by ano order by ano;
 ```
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantos_registros_ha_na_tabela_por_ano.png"></img>
 
--- Quantas equipes únicas mandantes existem?
+* Quantas equipes únicas mandantes existem?
 ```sql
 SELECT count(distinct home_team) as equipes_unicas FROM Partidas;
 ```
@@ -95,3 +93,25 @@ SELECT count(distinct home_team) as equipes_unicas FROM Partidas;
 SELECT ano, COUNT(distinct home_team) as equipes_unicas FROM Partidas group by ano order by ano;
 ```
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantas_equipes_unicas_mandantes_existem_por_ano.png"></img>
+
+* Quantas vezes as equipes mandantes saíram vitoriosas?
+```sql
+SELECT COUNT(*) as equipes_madantes_vitoriosas FROM Partidas where home_score > away_score;
+```
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantas_vezes_as_equipes_mandantes_sairam_vitoriosas.png"></img>
+
+```sql
+SELECT ano, COUNT(*) as equipes_madantes_vitoriosas FROM Partidas where home_score > away_score group by ano order by ano;
+```
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantas_vezes_as_equipes_mandantes_sairam_vitoriosas_por_ano.png"></img>
+
+* Quantas partidas resultaram em empate?
+```sql
+SELECT COUNT(*) as partidas_empatadas FROM Partidas where home_score = away_score;
+```
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantos_registros_ha_na_tabela.png"></img>
+
+```sql
+SELECT ano, COUNT(*) as equipes_madantes_vitoriosas FROM Partidas where home_score = away_score group by ano order by ano;
+```
+<img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/resultados/quantos_registros_ha_na_tabela_por_ano.png"></img>
