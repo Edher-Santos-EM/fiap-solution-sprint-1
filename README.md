@@ -68,13 +68,13 @@ hdfs dfs -ls /cartolafc/scouts_agregados
 
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/dbeaver-hive-conexao.png"></img>
 
-### Criando as Tabelas
+## Criando as Tabelas
 
 O script pode ser encontrado na pasta scr [script_tabelas.sql](https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/src/script_tabelas.sql)
 
 <img src="https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/dbeaver-hive-criacao-tabela.png"></img>
 
-### Consultas
+## Consultas
 O script pode ser encontrado na pasta scr [consultas.sql](https://github.com/Edher-Santos-EM/fiap-solution-sprint-1/blob/main/src/consultas.sql)
 
 * Quantos registros há na tabela por ano?
