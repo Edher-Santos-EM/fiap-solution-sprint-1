@@ -46,7 +46,7 @@ WHERE home_score = away_score
 GROUP BY ano 
 ORDER BY ano;
 
-
+-- Quais jogadores detêm os melhores scouts gerais e por ano?
 WITH melhores_atletas_ano as
 (SELECT ano, apelido, posicao, avg(pontos) OVER (PARTITION BY ano, apelido) media_pontos
 FROM scouts 
@@ -80,7 +80,8 @@ FROM melhores_atletas_ano
 WHERE ano = 2020 LIMIT 1)
 ORDER BY 1
 
--- Time montado com base nas views dos melhores scouts de atletas por posição 2 atacantes, 2 laterais, 2 meias, 4 zagueiros e 1 goleiro
+-- Qual é o time ideal?
+-- Selecionaos o seguinte esquema tático 2 atacantes, 2 laterais, 2 meias, 4 zagueiros e 1 goleiro
 WITH atletas AS (SELECT DISTINCT atletaid, apelido FROM scouts)
 SELECT posicao, apelido 
 FROM atacantes
