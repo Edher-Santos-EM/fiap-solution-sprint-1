@@ -13,7 +13,7 @@ FROM Partidas
 GROUP BY ano 
 ORDER BY ano;
 
--- Quantas vezes AS equipes mandantes saíram vitoriosas?
+-- Quantas vezes as equipes mandantes saíram vitoriosas?
 SELECT COUNT(*) AS equipes_madantes_vitoriosas 
 FROM Partidas 
 WHERE home_score > away_score;
@@ -21,6 +21,17 @@ WHERE home_score > away_score;
 SELECT ano, COUNT(*) AS equipes_madantes_vitoriosas 
 FROM Partidas 
 WHERE home_score > away_score 
+GROUP BY ano 
+ORDER BY ano;
+
+-- Quantas vezes as equipes visitantes saíram vitoriosas?
+SELECT COUNT(*) AS equipes_madantes_vitoriosas 
+FROM Partidas 
+WHERE home_score < away_score;
+
+SELECT ano, COUNT(*) AS equipes_madantes_vitoriosas 
+FROM Partidas 
+WHERE home_score < away_score 
 GROUP BY ano 
 ORDER BY ano;
 
@@ -35,6 +46,39 @@ WHERE home_score = away_score
 GROUP BY ano 
 ORDER BY ano;
 
+
+WITH melhores_atletas_ano as
+(SELECT ano, apelido, posicao, avg(pontos) OVER (PARTITION BY ano, apelido) media_pontos
+FROM scouts 
+ORDER BY ano, media_pontos DESC)
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2014 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2015 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2016 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2017 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2018 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2019 LIMIT 1)
+UNION ALL
+(SELECT ano, apelido, posicao
+FROM melhores_atletas_ano
+WHERE ano = 2020 LIMIT 1)
+ORDER BY 1
 
 -- Time montado com base nas views dos melhores scouts de atletas por posição 2 atacantes, 2 laterais, 2 meias, 4 zagueiros e 1 goleiro
 WITH atletas AS (SELECT DISTINCT atletaid, apelido FROM scouts)
