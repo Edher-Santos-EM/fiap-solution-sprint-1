@@ -47,9 +47,9 @@ SELECT COUNT(*) as partidas_empatadas FROM Partidas where home_score = away_scor
 <img src="./resultados/quantos_registros_ha_na_tabela.png"></img>
 
 ```sql
-SELECT ano, COUNT(*) as equipes_madantes_vitoriosas FROM Partidas where home_score = away_score group by ano order by ano;
+SELECT ano, COUNT(*) as partidas_empatadas FROM Partidas where home_score = away_score group by ano order by ano;
 ```
-<img src="./resultados/quantos_registros_ha_na_tabela_por_ano.png"></img>
+<img src="./resultados/quantas_partidas_resultaram_em_empate_ano.png"></img>
 
 ## Quais jogadores detêm os melhores scouts gerais e por ano?
 
