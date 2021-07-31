@@ -36,7 +36,7 @@ SELECT COUNT(*) AS equipes_madantes_vitoriosas FROM Partidas WHERE home_score < 
 <img src="./resultados/quantas_vezes_as_equipes_visitantes_sairam_vitoriosas.png"></img>
 
 ```sql
-SELECT ano, COUNT(*) AS equipes_madantes_vitoriosas FROM Partidas WHERE home_score < away_score GROUP BY ano ORDER BY ano;
+SELECT ano, COUNT(*) AS equipes_visitantes_vitoriosas FROM Partidas WHERE home_score < away_score GROUP BY ano ORDER BY ano;
 ```
 <img src="./resultados/quantas_vezes_as_equipes_visitantes_sairam_vitoriosas_por_ano.png"></img>
 
