@@ -31,7 +31,7 @@ SELECT ano, COUNT(*) as equipes_madantes_vitoriosas FROM Partidas where home_sco
 
 ## Quantas vezes as equipes visitantes saíram vitoriosas?
 ```sql
-SELECT COUNT(*) AS equipes_madantes_vitoriosas FROM Partidas WHERE home_score < away_score;
+SELECT COUNT(*) AS equipes_visitantes_vitoriosas FROM Partidas WHERE home_score < away_score;
 ```
 <img src="./resultados/quantas_vezes_as_equipes_visitantes_sairam_vitoriosas.png"></img>
 
